@@ -12,6 +12,7 @@ import {
   IonListHeader,
   IonModal,
   IonRow,
+  IonSearchbar,
 } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import './SequencesContainer.css';
@@ -34,10 +35,48 @@ const SequencesContainer: React.FC<ContainerProps> = ({ name }) => {
     symptoms: String(),
     viralFactor: String(),
   });
+  const [searchValue, setSearchValue] = useState(String());
+  const [searchResults, setSearchResults] = useState(Array());
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getSequences());
   }, []);
+  useEffect(() => {
+    setSearchResults(sequences);
+
+    return () => {};
+  }, [sequences]);
+  useEffect(() => {
+    if (!searchValue.length) {
+      setSearchResults(sequences);
+    } else if (sequences) {
+      const results = sequences.filter((item: any) => {
+        if (
+          item?.sequence &&
+          item?.sequence?.toLowerCase().includes(searchValue) === true
+        )
+          return item?.sequence?.toLowerCase().includes(searchValue);
+        if (
+          item?.pathogen &&
+          item?.pathogen?.toLowerCase().includes(searchValue) === true
+        )
+          return item?.pathogen?.toLowerCase().includes(searchValue);
+        if (
+          item?.symptoms &&
+          item?.symptoms?.toLowerCase().includes(searchValue) === true
+        )
+          return item?.symptoms?.toLowerCase().includes(searchValue);
+        if (
+          item?.viralFactor &&
+          item?.viralFactor?.toLowerCase().includes(searchValue) === true
+        )
+          return item?.viralFactor?.toLowerCase().includes(searchValue);
+      });
+      setSearchResults(results);
+    }
+    return () => {};
+  }, [searchValue]);
   const showEditModal = (item: any) => {
     setEditState(item);
     setShowModal(true);
@@ -101,12 +140,21 @@ const SequencesContainer: React.FC<ContainerProps> = ({ name }) => {
   };
   return (
     <IonContent>
+      <IonSearchbar
+        value={searchValue}
+        onIonChange={(e: any) => {
+          setSearchValue(e.detail.value);
+        }}
+        debounce={50}
+        placeholder='search sequences'
+        showCancelButton='focus'
+      />
       <IonFab vertical='top' horizontal='end' slot='fixed'>
         <IonFabButton onClick={() => setShowModal(true)}>
           <IonIcon icon={add} />
         </IonFabButton>
       </IonFab>
-      <SequenceList data={sequences} />
+      <SequenceList data={searchResults} />
       <IonModal
         backdropDismiss={false}
         isOpen={showModal}

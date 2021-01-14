@@ -36,7 +36,7 @@ const App: React.FC = () => {
               <Menu />
               <IonRouterOutlet id='main'>
                 <Route path='/:name' component={Page} exact />
-                <Redirect from='/' to='/Visits' exact />
+                <Redirect from='/' to='/Sequences' exact />
               </IonRouterOutlet>
             </IonSplitPane>
           </ReactReduxFirebaseProvider>
