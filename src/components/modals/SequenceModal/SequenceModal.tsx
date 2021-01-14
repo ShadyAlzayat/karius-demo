@@ -141,7 +141,15 @@ const SequenceModal: React.FC<ContainerProps> = ({
               <IonLabel position='floating'>
                 Pathogen <a>*</a>
               </IonLabel>
-              <IonInput value={pathogen}></IonInput>
+              <IonInput
+                value={pathogen}
+                onIonChange={(e) =>
+                  setDraftSequence({
+                    ...draftSequence,
+                    pathogen: e.detail.value!,
+                  })
+                }
+              ></IonInput>
             </IonItem>
             <IonItemDivider />
 
@@ -149,7 +157,15 @@ const SequenceModal: React.FC<ContainerProps> = ({
               <IonLabel position='floating'>
                 Symptoms <a>*</a>
               </IonLabel>
-              <IonInput value={symptoms}></IonInput>
+              <IonInput
+                value={symptoms}
+                onIonChange={(e) =>
+                  setDraftSequence({
+                    ...draftSequence,
+                    symptoms: e.detail.value!,
+                  })
+                }
+              ></IonInput>
             </IonItem>
             <IonItemDivider />
 
@@ -157,7 +173,15 @@ const SequenceModal: React.FC<ContainerProps> = ({
               <IonLabel position='floating'>
                 Viral Factor <a>*</a>
               </IonLabel>
-              <IonInput value={viralFactor}></IonInput>
+              <IonInput
+                value={viralFactor}
+                onIonChange={(e) =>
+                  setDraftSequence({
+                    ...draftSequence,
+                    viralFactor: e.detail.value!,
+                  })
+                }
+              ></IonInput>
             </IonItem>
             <IonItemDivider />
           </IonList>
