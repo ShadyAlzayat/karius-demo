@@ -1,0 +1,4 @@
+sequence: 123
+symptoms: pain
+pathogen: test
+viral factor: airborne

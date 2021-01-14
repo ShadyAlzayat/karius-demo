@@ -23,6 +23,10 @@ symptoms,
 viralFactor
 }
 
+# File upload
+
+please test.txt for a sample file example
+
 # Assumptions
 
 1. Firestore 1 MiB (1,048,576 bytes) character limit will come close to the 1m characters requirement. Otherwise, the sequence can be split into sub-collections (100 max) that can be joined together when rendered in the client.
