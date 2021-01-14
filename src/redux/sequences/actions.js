@@ -28,7 +28,6 @@ export const getSequences = (payload) => async (dispatch) => {
   }
 };
 export const addSequence = (payload) => async (dispatch) => {
-  console.log('payload', payload);
   try {
     await dbRef.collection('sequences').add({
       ...payload,

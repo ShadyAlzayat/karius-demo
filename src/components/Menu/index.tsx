@@ -12,7 +12,7 @@ import {
 
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { walkOutline, walkSharp } from 'ionicons/icons';
+import { accessibilityOutline, accessibilitySharp } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -26,8 +26,8 @@ const appPages: AppPage[] = [
   {
     title: 'Sequences',
     url: '/Sequences',
-    iosIcon: walkOutline,
-    mdIcon: walkSharp,
+    iosIcon: accessibilityOutline,
+    mdIcon: accessibilitySharp,
   },
 ];
 
