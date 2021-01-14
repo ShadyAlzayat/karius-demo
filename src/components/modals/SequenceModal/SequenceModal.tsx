@@ -130,7 +130,7 @@ const SequenceModal: React.FC<ContainerProps> = ({
                 onIonChange={(e) =>
                   setDraftSequence({
                     ...draftSequence,
-                    sequence: e.detail.value!,
+                    sequence: e.detail.value!.toUpperCase(),
                   })
                 }
               ></IonInput>
