@@ -1,0 +1,7 @@
+{
+  "name": "karius-demo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
